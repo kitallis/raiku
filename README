@@ -1,0 +1,17 @@
+My little experiments on trying to bind the C++ Haiku API. Currently only tested on Ruby1.9, which can be 
+downloaded from http://www.haiku-ports.de/packages/dev-lang/ruby/ruby-1.9.1-x86-gcc2-2009-10-28.zip
+
+There is an unresolved problem with the shared object file generation, apart from that, the HelloWorld.rb 
+works fine through these steps :
+
+> ruby extconf.rb 
+> make (will generate HelloWorld.o and a lot of warnings :| ; would also fail to create a shared object 
+file, which can be resolved by manually calling gcc)
+> gcc -shared Rb_Application.o -o Rb_Application.so
+> ruby HelloWorld.rb
+
+There are some tests/ as well, which would be updated as I constantly learn the Ruby C API (which seems 
+pretty nice to use up till now :D) and they can be compiled similarly.
+
+I would probably be moving into using Rice as an automater for certain things as I learn the Ruby C API, 
+which would make certain linkings easier. But I'd need to obviously port it before :|
